@@ -21,8 +21,8 @@ function setup(){
 
     ball = createSprite(random(20, 750), 100, 40, 40);
     ball.shapeColor = rgb(255, 255, 255);
-    ball.velocityX = -5;
-    ball.velocityY = 5;
+    ball.velocityX = 4;
+    ball.velocityY = 9;
 }
 
 function draw() {
@@ -32,30 +32,41 @@ function draw() {
     ball.bounceOff(edges);
     
     if(block1.y - ball.y < block1.height/2 + ball.height/2
-        && ball.y - block1.y < ball.height/2 + block1.height/2){
+        && ball.y - block1.y < ball.height/2 + block1.height/2 &&
+        block1.x - ball.x < block1.width/2 + ball.width/2
+        && ball.x - block1.x < ball.width/2 + block1.width/2 ){
             ball.velocityY = ball.velocityY * (-1);
+            ball.velocityX = ball.velocityX * (-1);
             ball.shapeColor = "blue";
             music.play();
-    }
-
+    } 
+    
     if(block2.y - ball.y < block2.height/2 + ball.height/2
-        && ball.y - block2.y < ball.height/2 + block2.height/2){
+        && ball.y - block2.y < ball.height/2 + block2.height/2
+        &&block2.x - ball.x < block2.width/2 + ball.width/2
+        && ball.x - block2.x < ball.width/2 + block2.width/2){
             ball.velocityY = 0;
             ball.velocityX = 0;
             ball.shapeColor = "orange";
             music.pause();
-    }
-
+    } 
     if(block3.y - ball.y < block3.height/2 + ball.height/2
-        && ball.y - block3.y < ball.height/2 + block3.height/2){
+        && ball.y - block3.y < ball.height/2 + block3.height/2
+        &&block3.x - ball.x < block3.width/2 + ball.width/2
+        && ball.x - block3.x < ball.width/2 + block3.width/2){
             ball.velocityY = ball.velocityY * (-1);
+            ball.velocityX = ball.velocityX * (-1);
             ball.shapeColor = "red";
-    }
-
+    } 
+    
     if(block4.y - ball.y < block4.height/2 + ball.height/2
-        && ball.y - block4.y < ball.height/2 + block4.height/2){
+        && ball.y - block4.y < ball.height/2 + block4.height/2 &&
+        block4.x - ball.x < block4.width/2 + ball.width/2
+        && ball.x - block4.x < ball.width/2 + block4.width/2
+        ){
             ball.velocityY = ball.velocityY * (-1);
-            ball.shapeColor = "orange";
+            ball.velocityX = ball.velocityX * (-1);
+            ball.shapeColor = "green";
     }
 
     drawSprites();
